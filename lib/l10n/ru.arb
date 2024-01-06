@@ -5,7 +5,7 @@
   "invalidMobilePhoneNumber": "Неверный номер мобильного телефона",
   "invalidFixedLinePhoneNumber": "Недействительный номер стационарного телефона",
   "requiredPhoneNumber": "Требуется номер телефона",
-  "noResultMessage": "Безрезультатно",
+  "noResultMessage": "Нет результата",
   "ac_": "Остров Вознесения",
   "ad_": "Андорра",
   "ae_": "Объединенные Арабские Эмираты",
