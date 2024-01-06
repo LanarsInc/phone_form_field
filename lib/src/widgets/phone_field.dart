@@ -1,16 +1,17 @@
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
-import 'package:phone_input/phone_input_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:phone_input/src/number_parser/metadata/metadata_finder.dart';
+import 'package:phone_input/phone_input_package.dart';
 import 'package:phone_input/src/constants/patterns.dart';
 import 'package:phone_input/src/controllers/phone_field_controller.dart';
+import 'package:phone_input/src/number_parser/metadata/metadata_finder.dart';
 
 /// Phone field
 ///
 /// This deals with mostly UI and has no dependency on any phone parser library
 class PhoneField extends StatefulWidget {
+  final VoidCallback? onSelectCountry;
   final PhoneInputController controller;
   final bool showFlagInInput;
   final String? errorText;
@@ -19,6 +20,7 @@ class PhoneField extends StatefulWidget {
   final InputDecoration decoration;
   final bool isCountrySelectionEnabled;
   final bool showArrow;
+
   /// configures the way the country picker selector is shown
   final CountrySelectorNavigator selectorNavigator;
 
@@ -66,6 +68,7 @@ class PhoneField extends StatefulWidget {
   const PhoneField({
     // form field params
     super.key,
+    this.onSelectCountry,
     required this.controller,
     required this.showFlagInInput,
     required this.selectorNavigator,
@@ -238,7 +241,12 @@ class PhoneFieldState extends State<PhoneField> {
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: selectCountry,
+          onTap: () {
+            if (widget.onSelectCountry != null) {
+              widget.onSelectCountry!();
+            }
+            selectCountry();
+          },
           // material here else the click pass through empty spaces
           child: Material(
             color: Colors.transparent,
