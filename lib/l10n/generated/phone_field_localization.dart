@@ -13,6 +13,7 @@ import 'phone_field_localization_es.dart';
 import 'phone_field_localization_fa.dart';
 import 'phone_field_localization_fr.dart';
 import 'phone_field_localization_hi.dart';
+import 'phone_field_localization_hy.dart';
 import 'phone_field_localization_it.dart';
 import 'phone_field_localization_nl.dart';
 import 'phone_field_localization_pt.dart';
@@ -74,7 +75,8 @@ import 'phone_field_localization_zh.dart';
 /// be consistent with the languages listed in the PhoneFieldLocalization.supportedLocales
 /// property.
 abstract class PhoneFieldLocalization {
-  PhoneFieldLocalization(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  PhoneFieldLocalization(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -82,7 +84,8 @@ abstract class PhoneFieldLocalization {
     return Localizations.of<PhoneFieldLocalization>(context, PhoneFieldLocalization);
   }
 
-  static const LocalizationsDelegate<PhoneFieldLocalization> delegate = _PhoneFieldLocalizationDelegate();
+  static const LocalizationsDelegate<PhoneFieldLocalization> delegate =
+      _PhoneFieldLocalizationDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -94,7 +97,8 @@ abstract class PhoneFieldLocalization {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -111,6 +115,7 @@ abstract class PhoneFieldLocalization {
     Locale('fa'),
     Locale('fr'),
     Locale('hi'),
+    Locale('hy'),
     Locale('it'),
     Locale('nl'),
     Locale('pt'),
@@ -1625,39 +1630,72 @@ class _PhoneFieldLocalizationDelegate extends LocalizationsDelegate<PhoneFieldLo
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'de', 'el', 'en', 'es', 'fa', 'fr', 'hi', 'it', 'nl', 'pt', 'ru', 'sv', 'tr', 'uk', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'ar',
+        'hy',
+        'de',
+        'el',
+        'en',
+        'es',
+        'fa',
+        'fr',
+        'hi',
+        'it',
+        'nl',
+        'pt',
+        'ru',
+        'sv',
+        'tr',
+        'uk',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_PhoneFieldLocalizationDelegate old) => false;
 }
 
 PhoneFieldLocalization lookupPhoneFieldLocalization(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return PhoneFieldLocalizationAr();
-    case 'de': return PhoneFieldLocalizationDe();
-    case 'el': return PhoneFieldLocalizationEl();
-    case 'en': return PhoneFieldLocalizationEn();
-    case 'es': return PhoneFieldLocalizationEs();
-    case 'fa': return PhoneFieldLocalizationFa();
-    case 'fr': return PhoneFieldLocalizationFr();
-    case 'hi': return PhoneFieldLocalizationHi();
-    case 'it': return PhoneFieldLocalizationIt();
-    case 'nl': return PhoneFieldLocalizationNl();
-    case 'pt': return PhoneFieldLocalizationPt();
-    case 'ru': return PhoneFieldLocalizationRu();
-    case 'sv': return PhoneFieldLocalizationSv();
-    case 'tr': return PhoneFieldLocalizationTr();
-    case 'uk': return PhoneFieldLocalizationUk();
-    case 'zh': return PhoneFieldLocalizationZh();
+    case 'ar':
+      return PhoneFieldLocalizationAr();
+    case 'hy':
+      return PhoneFieldLocalizationHy();
+    case 'de':
+      return PhoneFieldLocalizationDe();
+    case 'el':
+      return PhoneFieldLocalizationEl();
+    case 'en':
+      return PhoneFieldLocalizationEn();
+    case 'es':
+      return PhoneFieldLocalizationEs();
+    case 'fa':
+      return PhoneFieldLocalizationFa();
+    case 'fr':
+      return PhoneFieldLocalizationFr();
+    case 'hi':
+      return PhoneFieldLocalizationHi();
+    case 'it':
+      return PhoneFieldLocalizationIt();
+    case 'nl':
+      return PhoneFieldLocalizationNl();
+    case 'pt':
+      return PhoneFieldLocalizationPt();
+    case 'ru':
+      return PhoneFieldLocalizationRu();
+    case 'sv':
+      return PhoneFieldLocalizationSv();
+    case 'tr':
+      return PhoneFieldLocalizationTr();
+    case 'uk':
+      return PhoneFieldLocalizationUk();
+    case 'zh':
+      return PhoneFieldLocalizationZh();
   }
 
   throw FlutterError(
-    'PhoneFieldLocalization.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'PhoneFieldLocalization.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

@@ -11,6 +11,9 @@ class PhoneInputApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: const Locale("hy"),
+      localizationsDelegates: PhoneFieldLocalization.localizationsDelegates,
+      supportedLocales: PhoneFieldLocalization.supportedLocales,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
