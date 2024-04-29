@@ -45,12 +45,12 @@ abstract class PhoneParser {
         ? MetadataFinder.getMetadataForIsoCode(destinationCountry)
         : null;
 
-    final withoutExitCode = InternationalPrefixParser.removeExitCode(
+    final (withoutExitCode, containsExitCode) =
+        InternationalPrefixParser.removeExitCode(
       phoneNumber,
       destinationCountryMetadata: destinationMetadata,
       callerCountryMetadata: callerMetadata,
     );
-    final containsExitCode = withoutExitCode.length != phoneNumber.length;
     // if no destination metadata was provided we have to find it,
     destinationMetadata ??= _findDestinationMetadata(
       phoneWithoutExitCode: withoutExitCode,
@@ -58,7 +58,9 @@ abstract class PhoneParser {
     );
     var national = withoutExitCode;
     // if there was no exit code then we assume we are dealing with a national number
-    if (containsExitCode) {
+    // if the number starts with the country code, we remove the country code
+    if (containsExitCode ||
+        withoutExitCode.startsWith(destinationMetadata.countryCode)) {
       national = CountryCodeParser.removeCountryCode(
         withoutExitCode,
         destinationMetadata.countryCode,
