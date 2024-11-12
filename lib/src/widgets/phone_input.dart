@@ -63,6 +63,8 @@ class PhoneInput extends FormField<PhoneNumber> {
   /// {@macro controller}
   final PhoneController? controller;
 
+  final VoidCallback? onSelectCountry;
+
   /// {@macro shouldFormat}
   final bool shouldFormat;
 
@@ -75,9 +77,10 @@ class PhoneInput extends FormField<PhoneNumber> {
   /// the focusNode of the national number
   final FocusNode? focusNode;
 
-    PhoneInput({
+  PhoneInput({
     Key? key,
     this.controller,
+    this.onSelectCountry,
     this.shouldFormat = true,
     this.onChanged,
     this.focusNode,
@@ -146,6 +149,7 @@ class PhoneInput extends FormField<PhoneNumber> {
           builder: (state) {
             final field = state as PhoneInputState;
             return PhoneField(
+              onSelectCountry: onSelectCountry,
               showArrow: showArrow,
               controller: field._childController,
               showFlagInInput: showFlagInInput,

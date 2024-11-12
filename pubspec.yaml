@@ -26,3 +26,5 @@ dev_dependencies:
 flutter:
   assets:
     - assets/svg/
+flutter_intl:
+  enabled: true

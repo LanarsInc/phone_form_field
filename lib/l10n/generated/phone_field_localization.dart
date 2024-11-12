@@ -10,8 +10,10 @@ import 'phone_field_localization_de.dart';
 import 'phone_field_localization_el.dart';
 import 'phone_field_localization_en.dart';
 import 'phone_field_localization_es.dart';
+import 'phone_field_localization_fa.dart';
 import 'phone_field_localization_fr.dart';
 import 'phone_field_localization_hi.dart';
+import 'phone_field_localization_hy.dart';
 import 'phone_field_localization_it.dart';
 import 'phone_field_localization_nl.dart';
 import 'phone_field_localization_pt.dart';
@@ -79,8 +81,7 @@ abstract class PhoneFieldLocalization {
   final String localeName;
 
   static PhoneFieldLocalization? of(BuildContext context) {
-    return Localizations.of<PhoneFieldLocalization>(
-        context, PhoneFieldLocalization);
+    return Localizations.of<PhoneFieldLocalization>(context, PhoneFieldLocalization);
   }
 
   static const LocalizationsDelegate<PhoneFieldLocalization> delegate =
@@ -111,8 +112,10 @@ abstract class PhoneFieldLocalization {
     Locale('el'),
     Locale('en'),
     Locale('es'),
+    Locale('fa'),
     Locale('fr'),
     Locale('hi'),
+    Locale('hy'),
     Locale('it'),
     Locale('nl'),
     Locale('pt'),
@@ -1618,23 +1621,23 @@ abstract class PhoneFieldLocalization {
   String get zw_;
 }
 
-class _PhoneFieldLocalizationDelegate
-    extends LocalizationsDelegate<PhoneFieldLocalization> {
+class _PhoneFieldLocalizationDelegate extends LocalizationsDelegate<PhoneFieldLocalization> {
   const _PhoneFieldLocalizationDelegate();
 
   @override
   Future<PhoneFieldLocalization> load(Locale locale) {
-    return SynchronousFuture<PhoneFieldLocalization>(
-        lookupPhoneFieldLocalization(locale));
+    return SynchronousFuture<PhoneFieldLocalization>(lookupPhoneFieldLocalization(locale));
   }
 
   @override
   bool isSupported(Locale locale) => <String>[
         'ar',
+        'hy',
         'de',
         'el',
         'en',
         'es',
+        'fa',
         'fr',
         'hi',
         'it',
@@ -1656,6 +1659,8 @@ PhoneFieldLocalization lookupPhoneFieldLocalization(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return PhoneFieldLocalizationAr();
+    case 'hy':
+      return PhoneFieldLocalizationHy();
     case 'de':
       return PhoneFieldLocalizationDe();
     case 'el':
@@ -1664,6 +1669,8 @@ PhoneFieldLocalization lookupPhoneFieldLocalization(Locale locale) {
       return PhoneFieldLocalizationEn();
     case 'es':
       return PhoneFieldLocalizationEs();
+    case 'fa':
+      return PhoneFieldLocalizationFa();
     case 'fr':
       return PhoneFieldLocalizationFr();
     case 'hi':
